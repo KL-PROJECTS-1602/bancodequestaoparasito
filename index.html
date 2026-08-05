@@ -453,7 +453,80 @@ const QUESTIONS = [
    e:"A Leishmania sabota a defesa por dentro: resiste ao fagolisossomo, inibe o burst oxidativo e induz IL-10/TGF-beta, mantendo o macrófago 'desligado'."},
   {t:"p2i", q:"Dizer que o perfil Th2 'não é o vilão' significa que:",
    o:["ele nunca causa problema","ele é o perfil PROTETOR contra helmintos (vermes), embora 'permita' os intracelulares","ele é igual ao Th1","ele não existe"], c:1,
-   e:"Não há perfil bom ou mau em absoluto: contra intracelulares protege o Th1; contra helmintos, o Th2 (IL-4, IL-5, IgE, eosinófilos). A doença mora no desequilíbrio, não num perfil isolado."}
+   e:"Não há perfil bom ou mau em absoluto: contra intracelulares protege o Th1; contra helmintos, o Th2 (IL-4, IL-5, IgE, eosinófilos). A doença mora no desequilíbrio, não num perfil isolado."},
+
+  /* ============ AMPLIAÇÃO — 30 + 30 (novas questões) ============ */
+  /* + Protozoários I — conceitos e mucosa */
+  {t:"p1c", q:"Por que poucos protozoários ingeridos podem gerar uma infecção intensa, ao contrário do que ocorre com muitos helmintos?",
+   o:["porque o helminto se multiplica mais rápido","porque o protozoário é pluricelular","porque o protozoário se multiplica dentro do hospedeiro, enquanto o helminto, em geral, não","porque o protozoário não causa doença"], c:2,
+   e:"O protozoário é unicelular e se multiplica dentro do hospedeiro: poucas formas iniciais geram carga alta. O helminto, em geral, não se multiplica no hospedeiro — a carga depende de quanto se ingeriu do ambiente."},
+  {t:"p1c", q:"A via fecal-oral é o elo comum de muitas protozooses intestinais porque:",
+   o:["todos os parasitos voam","formas resistentes eliminadas nas fezes contaminam água e alimentos e retornam pela boca","o parasito é transmitido por mosquito","não há relação com o saneamento"], c:1,
+   e:"Cistos (e ovos) saem nas fezes, contaminam água e alimentos e voltam pela boca. É o elo que o saneamento básico interrompe — por isso essas doenças concentram-se onde falta água tratada e esgoto."},
+  {t:"p1c", q:"Na mucosa intestinal há dois estilos de dano. A Entamoeba histolytica e a Giardia ilustram, respectivamente:",
+   o:["as duas apenas recobrem a superfície","as duas invadem o tecido","invadir o tecido (E. histolytica) × recobrir a superfície e atrapalhar a absorção (Giardia)","nenhuma causa dano"], c:2,
+   e:"A E. histolytica invade a parede (defesa protetora sobretudo celular); a Giardia não invade — recobre a superfície e prejudica a absorção (defesa central: IgA). Um mesmo intestino, dois modos de adoecer."},
+  {t:"p1c", q:"Quando o cisto de um protozoário intestinal é ingerido, o que ocorre no tubo digestivo?",
+   o:["ele é eliminado intacto, sem efeito","ocorre o desencistamento, liberando o trofozoíto que coloniza o intestino","ele vira um verme adulto","transforma-se em bactéria"], c:1,
+   e:"Ingerido, o cisto sofre desencistamento e libera o trofozoíto, a forma ativa que coloniza e adoece. Ao longo do trânsito, novos cistos se formam e saem nas fezes, fechando o ciclo."},
+  {t:"p1c", q:"Comparado ao das bactérias, tratar uma protozoose costuma ser mais delicado porque o protozoário:",
+   o:["é um vírus","não tem membrana","é sempre resistente a tudo","é eucarionte, com bioquímica próxima da das nossas células"], c:3,
+   e:"Por ser eucarionte, o protozoário tem organização e bioquímica próximas das nossas células — o que dificulta atacá-lo sem causar toxicidade ao hospedeiro."},
+
+  /* + Protozoários I — rizópodes / amebíase */
+  {t:"p1a", q:"A invasão da mucosa intestinal pela Entamoeba histolytica envolve, em sequência:",
+   o:["apenas a presença passiva do parasito","adesão (lectina), citólise da célula (amebaporo) e destruição da matriz por proteases","produção de anticorpos pelo parasito","formação de cistos no fígado"], c:1,
+   e:"A histolytica adere à mucosa por uma lectina, mata a célula de contato (amebaporo) e degrada a matriz com proteases — daí seu poder de invadir, ulcerar e alcançar o fígado."},
+  {t:"p1a", q:"A forma infectante da amebíase, ingerida com água e alimentos, é:",
+   o:["o trofozoíto","a hemácia","o cisto maduro (tetranucleado)","o gametócito"], c:2,
+   e:"O cisto maduro (tetranucleado) resiste no ambiente e é a forma ingerida. O trofozoíto, frágil, não sobrevive ao ambiente nem ao ácido gástrico — por isso não é a forma de transmissão."},
+  {t:"p1a", q:"Sobre a infecção por Entamoeba histolytica, é correto afirmar que:",
+   o:["todo infectado desenvolve disenteria grave","a maioria dos infectados é assintomática (portadora), e só parte desenvolve doença invasiva","ela nunca causa sintomas","só acomete o fígado"], c:1,
+   e:"Entre 'ter o parasito' e 'estar doente' há um espectro: muitos são portadores assintomáticos que eliminam cistos. A doença invasiva (disenteria, abscesso) ocorre em parte dos casos, conforme carga, cepa e hospedeiro."},
+  {t:"p1a", q:"Uma pista que ajuda a diferenciar a disenteria amebiana da disenteria bacteriana é que a amebíase:",
+   o:["cursa sempre com febre muito alta","costuma cursar sem febre alta e mostra trofozoítos com eritrófagos no exame","nunca tem sangue nas fezes","é diagnosticada por raio-X"], c:1,
+   e:"Ambas dão fezes com sangue; a amebíase tende a não ter febre alta e mostra trofozoítos hematófagos (com eritrófagos) no exame, enquanto as bacterianas costumam ter febre e outro perfil. A confirmação é laboratorial."},
+
+  /* + Protozoários I — flagelados */
+  {t:"p1f", q:"A estrutura que ancora o trofozoíto de Giardia à mucosa do intestino é:",
+   o:["apenas o flagelo caudal","o disco adesivo ventral","uma ventosa bucal","o cinetoplasto"], c:1,
+   e:"O disco adesivo ventral fixa a Giardia ao enterócito; ao recobrir a superfície, prejudica a absorção — a base da diarreia por má absorção, sem invasão."},
+  {t:"p1f", q:"A Giardia causa má absorção porque habita, preferencialmente:",
+   o:["o intestino delgado alto (duodeno/jejuno), onde ocorre grande parte da absorção","o intestino grosso","o estômago","o fígado"], c:0,
+   e:"A Giardia coloniza o delgado alto (duodeno/jejuno), justamente a região de maior absorção — daí a esteatorreia (fezes gordurosas) e a perda de peso."},
+  {t:"p1f", q:"Ferver ou filtrar a água é especialmente recomendado contra a Giardia porque o seu cisto:",
+   o:["é destruído por qualquer desinfetante","é relativamente resistente à cloração comum","não existe na água","só vive no sangue"], c:1,
+   e:"O cisto de Giardia é relativamente resistente ao cloro nas concentrações usuais; por isso a fervura e a filtração são especialmente úteis — e explicam surtos ligados à água e a creches."},
+  {t:"p1f", q:"Na tricomoníase, trata-se sempre o casal porque:",
+   o:["o parasito vive na água","o homem costuma ser portador assintomático e reinfecta a parceira","a doença é hereditária","não há tratamento para a mulher"], c:1,
+   e:"O homem frequentemente é portador assintomático; se só a mulher é tratada, ele a reinfecta. Por isso o tratamento é do casal, com antiparasitário (nitroimidazólico)."},
+
+  /* + Protozoários II — Leishmania */
+  {t:"p2l", q:"A forma mucosa (espúndia) da leishmaniose tegumentar, que destrói cartilagem do nariz e da boca, caracteriza-se por:",
+   o:["muitos parasitos e pouca resposta imune","poucos parasitos e muito dano — lesão em grande parte imunopatológica (Th1 excessiva)","ausência de lesão","cura espontânea rápida"], c:1,
+   e:"Na forma mucosa (associada sobretudo à L. braziliensis) há poucos parasitos, mas resposta Th1 exagerada que destrói a mucosa: o dano é em grande parte imunopatológico. Montenegro fortemente positivo."},
+  {t:"p2l", q:"O tratamento da leishmaniose visceral apoia-se, sobretudo, em:",
+   o:["antibióticos comuns","antimoniais pentavalentes e anfotericina B (preferencialmente lipossomal nos casos graves)","apenas repouso","uma vacina curativa"], c:1,
+   e:"As opções são os antimoniais pentavalentes (1ª linha histórica) e a anfotericina B, preferencialmente lipossomal na LV grave e em grupos de risco. A LV tem cura — a letalidade decorre do diagnóstico tardio."},
+
+  /* + Protozoários II — T. cruzi / Chagas */
+  {t:"p2c", q:"Após a fase aguda, a maioria das pessoas infectadas pelo Trypanosoma cruzi evolui para:",
+   o:["cura espontânea completa","a forma indeterminada: sorologia positiva, sem sintomas nem lesão detectável","cardiopatia imediata","megacólon em semanas"], c:1,
+   e:"A maioria segue para a forma indeterminada (assintomática, com sorologia positiva), que pode durar a vida toda; parte evoluirá, com o tempo, para a forma cardíaca ou digestiva. 'Assintomático' não é 'curado'."},
+  {t:"p2c", q:"O diagnóstico da fase aguda da doença de Chagas baseia-se em:",
+   o:["duas sorologias concordantes","pesquisa direta do parasito no sangue (a parasitemia é alta nessa fase)","biópsia do cólon","teste de Montenegro"], c:1,
+   e:"Na fase aguda a parasitemia é alta: procura-se a tripomastigota diretamente no sangue (exame a fresco, gota espessa, concentração). Na fase crônica, ao contrário, usam-se duas sorologias de princípios diferentes."},
+
+  /* + Protozoários II — imunologia */
+  {t:"p2i", q:"A citocina que funciona como 'interruptor' da resposta protetora Th1, produzida pela célula dendrítica ao apresentar o parasito, é:",
+   o:["a IL-4","a IL-12","a IL-10","a IgE"], c:1,
+   e:"Muita IL-12 empurra o linfócito CD4 para o perfil Th1 (protetor contra intracelulares); um ambiente de IL-4 empurra para Th2. Quem controla a IL-12 no início controla o desfecho."},
+  {t:"p2i", q:"Dizer que uma lesão é 'imunopatológica' (a defesa que fere) significa que o dano ao tecido é causado:",
+   o:["diretamente por uma toxina do parasito","pela própria resposta imune do hospedeiro (ex.: mucosa na leishmaniose; coração na Chagas crônica)","pela falta total de defesa","por bactérias apenas"], c:1,
+   e:"Na imunopatologia, quem lesa o órgão é a resposta imune, não o parasito em si. Exemplos: a destruição da mucosa na leishmaniose mucosa e a miocardite da Chagas crônica (pouco parasito, muita inflamação)."},
+  {t:"p2i", q:"A imunorregulação (Tregs, IL-10) é descrita como 'lâmina de dois gumes' porque:",
+   o:["só causa mal","freia a inflamação e evita a imunopatologia, mas em excesso desliga a defesa e permite a persistência do parasito","aumenta sempre a resposta","não tem função"], c:1,
+   e:"Na dose certa, a regulação evita o dano (imunopatologia); em excesso, desliga a defesa e favorece a persistência — como a IL-10 alta, dominante na leishmaniose visceral ativa."}
 ];
 
 /* ============ ESTADO ============ */
