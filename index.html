@@ -157,12 +157,12 @@
   <!-- ===== START ===== -->
   <section id="start" class="card">
     <h1 class="title serif">Banco de Questões</h1>
-    <p class="subtitle"><b>60 questões</b> — 30 de <b>Protozoários I</b> (rizópodes e flagelados) e 30 de <b>Protozoários II</b> (hemoflagelados). Questões objetivas com correção na hora e resposta comentada — para revisar e fixar o conteúdo das duas aulas.</p>
+    <p class="subtitle">Quatro blocos para escolher: <b>Introdução à Parasitologia com Imunologia</b>, <b>Protozoários I</b> (rizópodes e flagelados), <b>Protozoários II</b> (hemoflagelados) e <b>Protozoários III</b> (Apicomplexa). Questões objetivas com correção na hora e resposta comentada.</p>
     <div class="rule"></div>
     <div class="stats">
       <div class="stat"><div class="n" id="stTotal">–</div><div class="l">questões</div></div>
-      <div class="stat"><div class="n">6</div><div class="l">temas</div></div>
-      <div class="stat"><div class="n">I · II</div><div class="l">aulas</div></div>
+      <div class="stat"><div class="n" id="stTemas">–</div><div class="l">temas</div></div>
+      <div class="stat"><div class="n">4</div><div class="l">aulas</div></div>
       <div class="stat"><div class="n">100%</div><div class="l">comentadas</div></div>
     </div>
 
@@ -177,8 +177,10 @@
     <div class="seclabel">1 · Escolha os temas</div>
     <div class="chiprow">
       <button class="minibtn" onclick="selAll(true)">Todos</button>
+      <button class="minibtn" onclick="selAula('Intro')">Só Introdução</button>
       <button class="minibtn" onclick="selAula('I')">Só Protozoários I</button>
       <button class="minibtn" onclick="selAula('II')">Só Protozoários II</button>
+      <button class="minibtn" onclick="selAula('III')">Só Protozoários III</button>
       <button class="minibtn" onclick="selAll(false)">Limpar</button>
     </div>
     <div class="chips" id="temaChips"></div>
@@ -247,7 +249,7 @@
 
   <footer>
     Profa. Dra. Kerolayne de Melo Nogueira · Licenciatura em Ciências Naturais — Biologia · 2026.3<br>
-    Protozoários I (Entamoeba, amebas comensais, Giardia, Trichomonas) e Protozoários II (Leishmania, Trypanosoma cruzi, imunologia).
+    Introdução à Parasitologia com Imunologia · Protozoários I (Entamoeba, Giardia, Trichomonas) · Protozoários II (Leishmania, Trypanosoma cruzi) · Protozoários III (Plasmodium, Toxoplasma).
   </footer>
 </div>
 
@@ -315,14 +317,121 @@ const PROF_PIN = "2026";                  // PIN da área do professor (troque s
 
 /* ============ BANCO DE QUESTÕES ============ */
 const TEMAS = {
+  ia_conc:{nome:"Intro · Conceitos fundamentais", cor:"#0A3A35", aula:"Intro"},
+  ia_soc:{nome:"Intro · Doença tropical & Saúde", cor:"#9C3D2E", aula:"Intro"},
+  ia_pat:{nome:"Intro · Patogenia", cor:"#8F6414", aula:"Intro"},
+  ia_imu:{nome:"Intro · Imunologia", cor:"#2F7D57", aula:"Intro"},
+  ia_proto:{nome:"Intro · Protozoários (geral)", cor:"#4B6584", aula:"Intro"},
   p1c:{nome:"I · Conceitos e mucosa", cor:"#3E7C68", aula:"I"},
   p1a:{nome:"I · Rizópodes (amebíase)", cor:"#D64C2F", aula:"I"},
   p1f:{nome:"I · Flagelados (Giardia, Trichomonas)", cor:"#B9831A", aula:"I"},
   p2l:{nome:"II · Leishmania", cor:"#0E4C46", aula:"II"},
   p2c:{nome:"II · T. cruzi (Chagas)", cor:"#6A4C93", aula:"II"},
-  p2i:{nome:"II · Imunologia", cor:"#2F6E8F", aula:"II"}
+  p2i:{nome:"II · Imunologia", cor:"#2F6E8F", aula:"II"},
+  p3g:{nome:"III · Apicomplexa (geral)", cor:"#5B4B8A", aula:"III"},
+  p3p:{nome:"III · Plasmodium (malária)", cor:"#B23A20", aula:"III"},
+  p3t:{nome:"III · Toxoplasma (toxoplasmose)", cor:"#1F7A6B", aula:"III"}
 };
 const QUESTIONS = [
+  /* ======= Introdução à Parasitologia com Imunologia (Aula 1) ======= */
+  {t:"ia_conc", q:"Sobre os tipos de hospedeiro, é correto afirmar que o hospedeiro definitivo é aquele em que:",
+   o:["o parasito permanece por mais tempo","ocorre a reprodução sexuada (ou se encontra a forma adulta)","a doença é sempre mais grave","o parasito foi descrito pela primeira vez"], c:1,
+   e:"O hospedeiro definitivo define-se pela reprodução sexuada, não pelo tempo nem pela gravidade. Na malária, o hospedeiro definitivo é o mosquito Anopheles; o ser humano, onde há multiplicação assexuada e doença, é o intermediário."},
+  {t:"ia_conc", q:"Um vetor é classificado como biológico quando:",
+   o:["apenas transporta o parasito no corpo ou nas patas","o parasito se desenvolve e/ou se multiplica em seu interior","não participa do ciclo do parasito","é sempre um molusco de água doce"], c:1,
+   e:"No vetor biológico (ex.: o flebotomíneo da leishmaniose) o parasito cumpre parte obrigatória do ciclo — por isso é insubstituível, e combatê-lo interrompe a transmissão. O vetor mecânico (ex.: a mosca) apenas transporta."},
+  {t:"ia_conc", q:"A diferença prática entre ciclo monoxeno e heteroxeno está sobretudo em:",
+   o:["quantos ovos o parasito produz","o número de hospedeiros necessários — e, com isso, a estratégia de profilaxia","o tamanho do parasito adulto","a cor da forma infectante"], c:1,
+   e:"O monoxeno completa-se num único hospedeiro (ex.: Ascaris) — profilaxia pelo saneamento; o heteroxeno exige dois ou mais (ex.: leishmaniose) — profilaxia no elo mais vulnerável (vetor, reservatório)."},
+  {t:"ia_conc", q:"O conceito de reservatório refere-se a:",
+   o:["o indivíduo doente que procura o serviço de saúde","a fonte que mantém o parasito na natureza, garantindo novas infecções","o mesmo que hospedeiro intermediário","o local do corpo onde o parasito se instala"], c:1,
+   e:"Reservatório é um conceito de manutenção: a fonte (frequentemente um animal, como o cão na leishmaniose) que sustenta o parasito no ambiente. Por isso não se controla uma zoonose tratando só os doentes humanos."},
+  {t:"ia_conc", q:"Na maioria das protozooses intestinais, a regra de transmissão é:",
+   o:["transmite-se o trofozoíto e adoece-se pelo cisto","transmite-se o cisto e adoece-se pelo trofozoíto","ambas as formas transmitem igualmente","não há forma de resistência envolvida"], c:1,
+   e:"O cisto é a forma de resistência que sobrevive no ambiente e é ingerida (transmite); o trofozoíto é a forma ativa que coloniza e causa dano (adoece). Exceção notável: o Trichomonas, que não forma cisto."},
+  {t:"ia_conc", q:"Sobre a nomenclatura científica, assinale a forma CORRETA:",
+   o:["trypanosoma cruzi","Trypanosoma Cruzi","Trypanosoma cruzi","TRYPANOSOMA CRUZI"], c:2,
+   e:"No binômio, o gênero leva inicial maiúscula e o epíteto específico minúscula, ambos em itálico (ou sublinhado, se manuscrito): Trypanosoma cruzi. O erro de caixa no epíteto é o mais comum."},
+
+  {t:"ia_soc", q:"Segundo a leitura crítica do conceito, o que torna uma doença \"tropical\" é, principalmente:",
+   o:["o calor e a umidade dos trópicos","a determinação social (pobreza, ausência de saneamento) mais do que o clima","a presença exclusiva de vírus","uma característica genética das populações"], c:1,
+   e:"O clima favorece, mas não determina: doenças \"tropicais\" existiram em regiões temperadas e recuaram com saneamento, moradia e renda, sem que o clima mudasse. A tropicalidade é, em grande parte, socialmente construída."},
+  {t:"ia_soc", q:"Chamar uma doença de \"negligenciada\" significa, principalmente, que ela:",
+   o:["é rara e de pouca importância","recebe pouco investimento e prioridade por atingir populações pobres e sem voz","é causada apenas por protozoários","não possui tratamento conhecido"], c:1,
+   e:"\"Negligenciada\" é um diagnóstico sobre uma escolha coletiva — a negligência científica, política e social. Não se refere à raridade: são doenças comuns e de alta carga, concentradas na pobreza."},
+  {t:"ia_soc", q:"No modelo em camadas dos determinantes sociais da saúde (Dahlgren e Whitehead), a leitura correta é que:",
+   o:["a camada individual determina todas as demais","as camadas externas (renda, saneamento, política) condicionam as internas","apenas a genética importa","os determinantes sociais não afetam parasitoses"], c:1,
+   e:"Lê-se de fora para dentro: exigir \"estilo de vida saudável\" de quem não tem água tratada nem saneamento é ler o diagrama ao contrário. As condições de vida determinam o que é possível na escolha individual."},
+  {t:"ia_soc", q:"O ciclo vicioso pobreza–doença é descrito como bidirecional porque:",
+   o:["a pobreza causa a doença, e o assunto se encerra aí","a doença causa a pobreza, e o assunto se encerra aí","a pobreza expõe à doença e a doença, por sua vez, aprofunda a pobreza","não há relação entre os dois"], c:2,
+   e:"A pobreza expõe (falta de saneamento, desnutrição) e a doença rouba escola, trabalho e futuro, aprofundando a pobreza que a originou. Romper qualquer elo — inclusive pela educação — é fazer Saúde Pública."},
+  {t:"ia_soc", q:"O Maranhão concentra grande carga de doenças negligenciadas em parte porque:",
+   o:["tem o clima mais quente do país","pertence, ao mesmo tempo, ao Nordeste e à Amazônia Legal, com alta pobreza","não tem serviços de saúde","é o menor estado do país"], c:1,
+   e:"A dupla pertença (Nordeste + Amazônia Legal), somada à pobreza e ao baixo saneamento, coloca o estado na interseção de dois Brasis de alta carga parasitária — e o torna epicentro nacional da leishmaniose visceral."},
+
+  {t:"ia_pat", q:"A ação espoliadora dos ancilostomídeos causa, sobretudo:",
+   o:["obstrução intestinal aguda","anemia ferropriva por perda crônica de sangue","abscesso hepático","meningite"], c:1,
+   e:"Os ancilostomídeos consomem sangue continuamente; a perda crônica de ferro leva à anemia ferropriva, com impacto no desenvolvimento e no aprendizado — um mecanismo biológico com desdobramento social direto."},
+  {t:"ia_pat", q:"O novelo de Ascaris obstruindo o intestino é exemplo de ação:",
+   o:["tóxica","mecânica (obstrutiva)","imunopatológica","espoliadora"], c:1,
+   e:"A ação mecânica é o dano por massa/ocupação: muitos vermes formam um novelo que obstrui a luz intestinal; cisticercos ocupam espaço no cérebro. Quanto maior a carga, maior o dano."},
+  {t:"ia_pat", q:"A imunopatologia (a \"defesa que adoece\") é bem ilustrada:",
+   o:["pelo granuloma da esquistossomose, cuja fibrose lesa o fígado","pela simples presença do verme no intestino","pela ação direta de uma toxina","pela reprodução do parasito no sangue"], c:0,
+   e:"O granuloma isola o ovo (protetor), mas sua repetição deposita fibrose (Symmers) e causa hipertensão portal. Quem lesa o órgão é a resposta imune, não o verme — o \"fogo amigo\" do sistema de defesa."},
+  {t:"ia_pat", q:"A gravidade de uma parasitose depende, essencialmente, de:",
+   o:["apenas do número de parasitos","apenas do estado do hospedeiro","da combinação carga parasitária × estado do hospedeiro × resposta imune","da cor das fezes"], c:2,
+   e:"A mesma infecção adoece pessoas de formas diferentes: gravidade = carga × estado do corpo (nutrição, idade, imunidade) × qualidade da resposta. E o \"estado do corpo\" depende, no fundo, de condições sociais."},
+  {t:"ia_pat", q:"O portador assintomático é epidemiologicamente importante porque:",
+   o:["nunca transmite o parasito","está infectado sem sintomas, mas pode transmitir e sustentar a cadeia","é sempre imune","já foi tratado"], c:1,
+   e:"Entre \"ter o parasito\" e \"estar doente\" há um espectro. O portador assintomático elimina formas infectantes silenciosamente — por isso a busca ativa procura também os infectados sem sintomas."},
+
+  {t:"ia_imu", q:"Qual característica é EXCLUSIVA da imunidade adaptativa?",
+   o:["resposta imediata, em minutos","reconhecimento inespecífico de padrões","especificidade e memória imunológica","atuação por barreiras e fagócitos"], c:2,
+   e:"A adaptativa é específica e guarda memória (a base da vacina); a inata é imediata e inespecífica. As duas cooperam — e a inata inclusive instrui, cedo, o perfil (Th1/Th2) que a adaptativa vai assumir."},
+  {t:"ia_imu", q:"No reconhecimento do parasito pela imunidade inata, o PAMP é:",
+   o:["o receptor da célula de defesa","o padrão molecular do patógeno que denuncia sua presença","um tipo de anticorpo","uma citocina reguladora"], c:1,
+   e:"O PAMP é a \"cara de suspeito\" — um padrão molecular conservado do parasito. O receptor que o lê é o PRR (ex.: os TLR). Esse encontro inicial orienta quais citocinas serão liberadas e, com elas, o perfil da resposta."},
+  {t:"ia_imu", q:"Entre as funções do sistema complemento NÃO se inclui:",
+   o:["opsonização (marcar o parasito para a fagocitose)","inflamação (recrutar células)","lise da membrana do alvo","produção de memória imunológica específica"], c:3,
+   e:"O complemento opsoniza, inflama e lisa (complexo de ataque à membrana) — mas é da imunidade inata e não gera memória específica. Memória é atributo da imunidade adaptativa (linfócitos)."},
+  {t:"ia_imu", q:"A molécula que \"apresenta\" fragmentos do parasito aos linfócitos T é:",
+   o:["a IgA","o MHC","o complemento","a histamina"], c:1,
+   e:"O MHC é o \"cartaz\" que a célula usa para exibir pedaços do que produz por dentro (classe I, ao CD8) ou capturou por fora (classe II, ao CD4). A localização do parasito decide qual resposta é chamada."},
+  {t:"ia_imu", q:"Sobre os linfócitos T, é correto dizer que:",
+   o:["o CD4 é o atirador que mata células infectadas","o CD8 apenas produz anticorpos","o CD4 coordena a resposta (o \"general\") e o CD8 destrói células infectadas (o \"atirador\")","ambos produzem cistos"], c:2,
+   e:"O CD4 comanda enviando citocinas e escolhe a tática (Th1/Th2); o CD8 executa, matando as células tomadas pelo parasito. Contra intracelulares, a qualidade do comando protege mais que a quantidade de anticorpos."},
+  {t:"ia_imu", q:"Contra parasitos intracelulares (ex.: Leishmania no macrófago), a resposta protetora é principalmente:",
+   o:["Th2, com IgE e eosinófilos","Th1, com IFN-gama ativando o macrófago","produção maciça de anticorpos","resposta reguladora (Treg)"], c:1,
+   e:"O parasito escondido dentro da célula só é morto quando o macrófago é ATIVADO pelo IFN-gama (perfil Th1). Anticorpos e Th2 não alcançam o parasito intracelular."},
+  {t:"ia_imu", q:"A resposta do tipo Th2, típica contra helmintos, caracteriza-se por:",
+   o:["ativação do macrófago por IFN-gama","muco, eosinófilos e anticorpo IgE (lógica de expulsão)","produção de óxido nítrico intracelular","ausência de citocinas"], c:1,
+   e:"Contra o verme grande demais para ser fagocitado, o corpo tenta expulsá-lo: muco, motilidade, eosinófilos e IgE. Por isso a eosinofilia no hemograma é pista de helmintíase."},
+  {t:"ia_imu", q:"A citocina considerada a \"assinatura\" do perfil Th1 é:",
+   o:["a IL-4","o IFN-gama","a IL-10","a IL-5"], c:1,
+   e:"O IFN-gama é a citocina-ordem do Th1: ativa o macrófago a destruir o parasito que abriga. IL-4/5/13 organizam o Th2; a IL-10 é reguladora (freia a resposta)."},
+  {t:"ia_imu", q:"O principal anticorpo da defesa das mucosas (intestinal, respiratória, urogenital) é:",
+   o:["a IgG","a IgM","a IgA secretora","a IgE"], c:2,
+   e:"A IgA reveste a superfície da mucosa e impede a adesão do parasito — a \"alfândega\" do corpo. É a defesa central contra os protozoários intestinais (Entamoeba, Giardia)."},
+  {t:"ia_imu", q:"Na leishmaniose visceral ativa há muitos anticorpos e, ainda assim, doença grave. Por quê?",
+   o:["os anticorpos causam a doença","a resposta protetora (Th1, celular) está deprimida, e o anticorpo não alcança o parasito intracelular","o parasito é extracelular","falta produção de IgE"], c:1,
+   e:"É o exemplo-mãe de que \"muito anticorpo\" não é proteção: contra intracelulares protege a resposta celular (Th1), que na LV está suprimida (IL-10 alta). Sem a Th1, o parasito se espalha por baço, fígado e medula."},
+  {t:"ia_imu", q:"São estratégias de EVASÃO imune usadas por parasitos, EXCETO:",
+   o:["variação antigênica (trocar as moléculas de superfície)","vida intracelular (esconder-se dentro da célula)","imunomodulação (induzir resposta reguladora)","produção de memória imunológica pelo hospedeiro"], c:3,
+   e:"Variação antigênica, vida intracelular e imunomodulação são táticas do parasito para escapar da defesa. A memória imunológica é uma resposta do hospedeiro — não uma evasão do parasito."},
+  {t:"ia_imu", q:"Uma eosinofilia acentuada no hemograma sugere investigar, sobretudo:",
+   o:["infecção por protozoário intracelular","helmintíase (resposta tipo Th2)","infecção bacteriana","deficiência de IgG"], c:1,
+   e:"Os helmintos disparam resposta Th2, que expande os eosinófilos e produz IgE. A eosinofilia é pista de verminose, embora não indique a espécie."},
+
+  {t:"ia_proto", q:"A principal diferença entre um protozoário e uma bactéria é que o protozoário:",
+   o:["é procarionte, sem núcleo","é eucarionte, com núcleo verdadeiro e organelas","é sempre maior que um verme","não causa doença"], c:1,
+   e:"Protozoário é eucarionte (núcleo e organelas); bactéria é procarionte. A proximidade bioquímica com nossas células torna o tratamento das protozooses, muitas vezes, mais delicado."},
+  {t:"ia_proto", q:"O grupo de protozoários que mais importa para o Maranhão, por abrigar a Leishmania, é o dos:",
+   o:["rizópodes","flagelados intestinais","hemoflagelados","apicomplexa"], c:2,
+   e:"Os hemoflagelados (flagelados do sangue e dos tecidos) incluem Leishmania e Trypanosoma cruzi. A leishmaniose visceral, protagonista da disciplina, pertence a este grupo."},
+  {t:"ia_proto", q:"A febre em ondas, com periodicidade quase marcada, na malária, deve-se à:",
+   o:["produção de anticorpos","esquizogonia sincronizada, com ruptura simultânea das hemácias","migração larval pelo pulmão","formação de cistos"], c:1,
+   e:"Nos Apicomplexa, a divisão múltipla (esquizogonia) dentro da hemácia culmina em rupturas sincronizadas que liberam parasitos e substâncias pirogênicas de uma vez — daí os acessos febris periódicos."},
+
   /* ---- Protozoários I — conceitos e mucosa ---- */
   {t:"p1c", q:"A diferença fundamental entre um protozoário e uma bactéria é que o protozoário é:",
    o:["procarionte, sem núcleo verdadeiro","eucarionte, com núcleo verdadeiro e organelas","um vírus de grande tamanho","sempre pluricelular"], c:1,
@@ -526,7 +635,104 @@ const QUESTIONS = [
    e:"Na imunopatologia, quem lesa o órgão é a resposta imune, não o parasito em si. Exemplos: a destruição da mucosa na leishmaniose mucosa e a miocardite da Chagas crônica (pouco parasito, muita inflamação)."},
   {t:"p2i", q:"A imunorregulação (Tregs, IL-10) é descrita como 'lâmina de dois gumes' porque:",
    o:["só causa mal","freia a inflamação e evita a imunopatologia, mas em excesso desliga a defesa e permite a persistência do parasito","aumenta sempre a resposta","não tem função"], c:1,
-   e:"Na dose certa, a regulação evita o dano (imunopatologia); em excesso, desliga a defesa e favorece a persistência — como a IL-10 alta, dominante na leishmaniose visceral ativa."}
+   e:"Na dose certa, a regulação evita o dano (imunopatologia); em excesso, desliga a defesa e favorece a persistência — como a IL-10 alta, dominante na leishmaniose visceral ativa."},
+
+  /* ======= Protozoários III — Apicomplexa (Plasmodium e Toxoplasma) ======= */
+  /* Apicomplexa — geral */
+  {t:"p3g", q:"O que define o filo Apicomplexa (como Plasmodium e Toxoplasma) é:",
+   o:["a presença de flagelos longos","o complexo apical (maquinaria de invasão) e a vida intracelular obrigatória","a locomoção por pseudópodes","viverem livres na água"], c:1,
+   e:"Os Apicomplexa não têm locomoção evidente: caracterizam-se pelo complexo apical, uma maquinaria na ponta da célula para invadir a célula hospedeira, e são todos parasitos intracelulares."},
+  {t:"p3g", q:"A forma infectante inoculada pelo mosquito na malária e a forma latente do Toxoplasma no cisto tecidual são, respectivamente:",
+   o:["merozoíto e taquizoíto","esporozoíto e bradizoíto","gametócito e oocisto","trofozoíto e esquizonte"], c:1,
+   e:"O esporozoíto é a forma inoculada pelo Anopheles (malária); o bradizoíto é a forma de multiplicação lenta, dentro do cisto tecidual, responsável pela latência do Toxoplasma."},
+  {t:"p3g", q:"Uma marca dos ciclos dos Apicomplexa é:",
+   o:["não terem reprodução","alternarem reprodução assexuada e sexuada, muitas vezes em hospedeiros diferentes","reproduzirem-se só por cisto","serem sempre monoxenos"], c:1,
+   e:"Os ciclos alternam fases assexuada e sexuada — por exemplo, assexuada no ser humano e sexuada no mosquito (malária) ou no gato (toxoplasmose)."},
+  {t:"p3g", q:"Por que, também nos Apicomplexa, a defesa protetora é sobretudo a resposta celular?",
+   o:["porque vivem apenas no sangue","porque são intracelulares, e o anticorpo não os alcança dentro da célula","porque não há resposta imune contra eles","porque são bactérias"], c:1,
+   e:"Como Leishmania e T. cruzi, os Apicomplexa vivem dentro das células; o anticorpo não chega lá, e quem controla é a resposta celular (com destaque para o IFN-gama). O fio da imunologia continua."},
+  {t:"p3g", q:"As duas parasitoses de maior peso causadas por Apicomplexa, estudadas nesta aula, são:",
+   o:["amebíase e giardíase","malária (Plasmodium) e toxoplasmose (Toxoplasma gondii)","leishmaniose e doença de Chagas","ascaridíase e teníase"], c:1,
+   e:"Plasmodium (malária) e Toxoplasma gondii (toxoplasmose) são os Apicomplexa de maior importância — a malária como doença da Amazônia; a toxoplasmose, cosmopolita e relevante na gestação."},
+  {t:"p3g", q:"Diferentemente das amebas e dos flagelados, os Apicomplexa locomovem-se:",
+   o:["por pseudópodes","por flagelos livres","sem estruturas de locomoção evidentes — deslizam e, sobretudo, invadem a célula","por cílios longos"], c:2,
+   e:"Não têm pseudópodes nem flagelos livres: movem-se por deslizamento e usam o complexo apical para penetrar ativamente na célula hospedeira."},
+
+  /* Plasmodium — malária */
+  {t:"p3p", q:"A malária é transmitida ao ser humano pela picada:",
+   o:["do mosquito Aedes aegypti","da fêmea do mosquito Anopheles","do barbeiro","do flebotomíneo"], c:1,
+   e:"A malária é transmitida pela picada da fêmea do Anopheles (no Brasil, sobretudo o Anopheles darlingi). É um vetor biológico: o parasito completa nele a fase sexuada."},
+  {t:"p3p", q:"No Brasil, a espécie de Plasmodium mais frequente e a mais grave são, respectivamente:",
+   o:["P. falciparum e P. vivax","P. vivax (mais comum) e P. falciparum (mais grave)","P. malariae e P. ovale","P. knowlesi e P. vivax"], c:1,
+   e:"No Brasil predomina o P. vivax (cerca de 80% dos casos), que causa recaídas; o P. falciparum é menos comum, porém responsável pela malária grave (cerebral)."},
+  {t:"p3p", q:"O ciclo da malária no ser humano tem duas fases. A que causa os sintomas (febre, anemia) é a:",
+   o:["fase hepática (silenciosa)","fase sanguínea (eritrocítica), com ruptura das hemácias","fase no mosquito","fase de cisto"], c:1,
+   e:"Primeiro há a fase hepática, silenciosa (incubação); depois a fase sanguínea, em que os parasitos invadem e rompem as hemácias — é ela que causa a febre e a anemia."},
+  {t:"p3p", q:"As recaídas da malária por P. vivax, semanas ou meses após a infecção, devem-se a:",
+   o:["uma nova picada obrigatória","hipnozoítos: formas dormentes no fígado que despertam","cistos no intestino","resistência ao tratamento, sempre"], c:1,
+   e:"O P. vivax (e o P. ovale) deixa formas dormentes no fígado, os hipnozoítos, que despertam depois e reiniciam a doença — daí a recaída, sem nova picada. O tratamento precisa eliminá-los (cura radical)."},
+  {t:"p3p", q:"A febre em acessos (paroxismos) da malária ocorre porque:",
+   o:["o fígado é destruído de uma vez","as hemácias infectadas se rompem de forma sincronizada, liberando parasitos e pirógenos","o mosquito pica em horários fixos","há produção súbita de anticorpos"], c:1,
+   e:"A esquizogonia sincronizada culmina em rupturas simultâneas das hemácias, liberando parasitos e substâncias pirogênicas de uma vez — daí os acessos febris periódicos (terçã/quartã)."},
+  {t:"p3p", q:"A malária grave (quase sempre por P. falciparum), incluindo a malária cerebral, decorre principalmente:",
+   o:["da produção de muco","do sequestro: hemácias infectadas aderem ao endotélio e obstruem microvasos (inclusive cerebrais)","de uma alergia à picada","da falta de parasitos"], c:1,
+   e:"O P. falciparum induz citoaderência (via PfEMP1): a hemácia infectada gruda no endotélio e some da circulação (sequestro), obstruindo microvasos de órgãos vitais — no cérebro, a malária cerebral."},
+  {t:"p3p", q:"O exame considerado padrão-ouro para o diagnóstico da malária no Brasil é:",
+   o:["a sorologia","a gota espessa (sangue corado)","o teste de Montenegro","a cultura de fezes"], c:1,
+   e:"A gota espessa concentra o sangue e permite achar o parasito mesmo em baixa parasitemia — barata e disponível na rede. O esfregaço delgado complementa, identificando a espécie."},
+  {t:"p3p", q:"No tratamento da malária por P. vivax, a primaquina é essencial porque:",
+   o:["trata apenas a febre","elimina os hipnozoítos do fígado (cura radical), evitando as recaídas","é um antibiótico","substitui o diagnóstico"], c:1,
+   e:"A primaquina (ou a tafenoquina) elimina os hipnozoítos hepáticos — a cura radical do vivax. Atenção: pode causar hemólise na deficiência de G6PD, que deve ser investigada antes."},
+  {t:"p3p", q:"Sobre a malária no Brasil, é correto afirmar que:",
+   o:["está distribuída igualmente pelo país","cerca de 99% dos casos ocorrem na Amazônia Legal — que inclui o Maranhão","não existe mais no país","é mais comum na Região Sul"], c:1,
+   e:"A malária no Brasil concentra-se na Amazônia Legal (cerca de 99% dos casos), e o Maranhão é um dos nove estados dessa região — por isso a doença também é uma questão maranhense."},
+  {t:"p3p", q:"A 'premunição', na malária, refere-se a:",
+   o:["imunidade total e permanente após uma infecção","uma imunidade parcial e não estéril, que depende de exposição contínua","uma vacina de dose única","a ausência de qualquer imunidade"], c:1,
+   e:"A imunidade adquirida na malária é parcial e não elimina o parasito (premunição); depende de exposição contínua e se perde ao sair da área endêmica — por isso as crianças são as mais vulneráveis à forma grave."},
+  {t:"p3p", q:"O traço falciforme (portador de um gene da HbS) é frequente em áreas de malária porque:",
+   o:["causa a malária","confere proteção parcial contra a malária grave (vantagem do heterozigoto)","impede a picada do mosquito","não tem relação com a malária"], c:1,
+   e:"O portador de uma cópia da HbS resiste à malária grave — vantagem que mantém o gene frequente onde a malária é intensa (seleção balanceadora). A ausência do antígeno Duffy, por sua vez, protege contra o P. vivax."},
+  {t:"p3p", q:"Sobre as vacinas contra a malária (RTS,S e R21), é correto dizer que:",
+   o:["curam a malária já instalada","são as primeiras recomendadas pela OMS, de eficácia parcial e voltadas à fase pré-eritrocítica","substituem o mosquiteiro e o diagnóstico","não existem"], c:1,
+   e:"As vacinas RTS,S/AS01 e R21/Matrix-M são as primeiras recomendadas pela OMS (2021 e 2023), com alvo na fase pré-eritrocítica e eficácia parcial — somam-se às demais medidas, não as substituem."},
+
+  /* Toxoplasma — toxoplasmose */
+  {t:"p3t", q:"O hospedeiro definitivo do Toxoplasma gondii — único que elimina oocistos nas fezes — é:",
+   o:["o ser humano","o gato (e outros felinos)","o boi","o cão"], c:1,
+   e:"Só nos felinos ocorre a fase sexuada, com formação de oocistos eliminados nas fezes. Os demais animais (incluindo o ser humano) são hospedeiros intermediários, com apenas a fase assexuada."},
+  {t:"p3t", q:"As três formas do Toxoplasma — taquizoíto, bradizoíto e oocisto — correspondem, respectivamente, a:",
+   o:["latente, aguda e sanguínea","fase aguda (multiplicação rápida), forma latente no cisto tecidual e forma ambiental (do gato)","três espécies diferentes","formas de resistência iguais"], c:1,
+   e:"Taquizoíto = multiplicação rápida (fase aguda); bradizoíto = forma lenta, no cisto tecidual (latência); oocisto = forma ambiental, eliminada nas fezes do gato."},
+  {t:"p3t", q:"Entre as principais vias de transmissão da toxoplasmose ao ser humano NÃO se inclui:",
+   o:["ingestão de carne crua ou malpassada (cistos)","ingestão de oocistos (água, verduras mal lavadas, solo)","transmissão congênita (mãe para o feto)","o simples carinho no pelo do gato"], c:3,
+   e:"Transmite-se por carne malcozida, por oocistos do ambiente e pela via congênita. O afeto ao gato não transmite: o risco está nas fezes (oocistos) e na carne crua — não no pelo."},
+  {t:"p3t", q:"Na maioria das pessoas com imunidade normal, a toxoplasmose:",
+   o:["é sempre fatal","costuma ser assintomática ou uma síndrome benigna (com ínguas), e depois fica latente","causa cegueira imediata","exige internação"], c:1,
+   e:"No imunocompetente, a primo-infecção geralmente é assintomática ou dá um quadro benigno (linfonodal). Depois, o parasito recolhe-se aos cistos teciduais e fica latente por toda a vida."},
+  {t:"p3t", q:"A tríade clássica de Sabin, da toxoplasmose congênita grave, é composta por:",
+   o:["febre, tosse e diarreia","coriorretinite, calcificações cerebrais e hidrocefalia","anemia, icterícia e edema","cegueira, surdez e mudez"], c:1,
+   e:"A toxoplasmose congênita grave associa coriorretinite (lesão ocular), calcificações cerebrais e hidrocefalia — muitas vezes com convulsões. Muitos recém-nascidos, porém, nascem sem sinais aparentes."},
+  {t:"p3t", q:"Sobre a toxoplasmose congênita, o 'paradoxo do trimestre' indica que:",
+   o:["quanto mais tarde a infecção, mais grave","a transmissão ao feto aumenta com a idade gestacional, mas a gravidade é maior quando a infecção é precoce","não há risco em nenhum momento","só há risco antes da gravidez"], c:1,
+   e:"A chance de transmissão cresce do 1º ao 3º trimestre, mas a gravidade é inversa: infecção precoce transmite menos, porém causa dano maior; infecção tardia transmite mais, com quadros mais leves. Só há risco se a infecção é adquirida na gestação."},
+  {t:"p3t", q:"No paciente imunossuprimido (ex.: aids), a toxoplasmose costuma se manifestar como:",
+   o:["uma gripe leve","reativação, sobretudo como encefalite toxoplásmica (lesões cerebrais)","diarreia aquosa","anemia isolada"], c:1,
+   e:"Com a queda da imunidade celular, os bradizoítos dos cistos se reconvertem em taquizoítos (reativação). A forma mais importante é a encefalite toxoplásmica — uma das principais infecções oportunistas na aids."},
+  {t:"p3t", q:"A toxoplasmose ocular (coriorretinite) é importante no Brasil porque:",
+   o:["não existe aqui","cepas locais mais virulentas tornam a doença ocular mais frequente e grave","só ocorre em idosos","é causada por uma bactéria"], c:1,
+   e:"O Toxoplasma tem predileção pela retina; no Brasil, cepas atípicas mais virulentas tornam a coriorretinite mais frequente e severa — inclusive em imunocompetentes. Pode ser sequela da forma congênita."},
+  {t:"p3t", q:"Na toxoplasmose, o que mantém o parasito 'preso' (latente) nos cistos, e cuja queda leva à reativação, é:",
+   o:["o anticorpo IgE","a resposta celular Th1 (IFN-gama)","o sistema complemento","a IgA de mucosa"], c:1,
+   e:"A resposta Th1 (IL-12 → IFN-gama) contém os taquizoítos e força a conversão em bradizoítos encistados, mantendo a latência. Quando a imunidade celular cai, o equilíbrio se rompe e a doença reativa — o mesmo fio de Leishmania e Chagas."},
+  {t:"p3t", q:"Na investigação da toxoplasmose na gestante, o teste de avidez de IgG ajuda a:",
+   o:["tratar a doença","datar a infecção — avidez alta afasta infecção recente","medir a glicose","substituir o pré-natal"], c:1,
+   e:"A sorologia (IgM/IgG) somada ao teste de avidez de IgG ajuda a distinguir infecção antiga (sem risco fetal) de recente (com risco): avidez alta indica infecção há mais tempo. É a imunologia orientando o cuidado."},
+  {t:"p3t", q:"Uma orientação de prevenção da toxoplasmose para a gestante é:",
+   o:["comer carne malpassada","cozinhar bem as carnes, lavar as verduras e evitar contato com fezes de gato (ou usar luvas)","criar mais gatos","não lavar as mãos"], c:1,
+   e:"Prevenção: carne bem cozida (o calor mata os cistos), higiene de frutas e verduras, cuidado com a caixa de areia (luvas) e luvas na jardinagem. O pré-natal deve rastrear a sorologia."},
+  {t:"p3t", q:"O tratamento das formas ativas da toxoplasmose (congênita, ocular, no imunossuprimido) baseia-se em:",
+   o:["apenas repouso","sulfadiazina + pirimetamina + ácido folínico (e espiramicina na gestante, para reduzir a transmissão)","um antibiótico comum","não há tratamento"], c:1,
+   e:"O esquema clássico é sulfadiazina + pirimetamina + ácido folínico (este protege a medula óssea). Na gestante com infecção aguda usa-se a espiramicina, para reduzir a transmissão ao feto. O imunocompetente assintomático em geral não é tratado."}
 ];
 
 /* ============ ESTADO ============ */
@@ -540,6 +746,7 @@ let formspreeUrl = FORMSPREE_ENDPOINT;
 
 /* ============ INIT ============ */
 document.getElementById('stTotal').textContent = QUESTIONS.length;
+document.getElementById('stTemas').textContent = Object.keys(TEMAS).length;
 (function initChips(){
   const c = document.getElementById('temaChips');
   Object.entries(TEMAS).forEach(([k,v])=>{
